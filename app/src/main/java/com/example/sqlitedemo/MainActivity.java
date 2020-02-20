@@ -1,6 +1,8 @@
 package com.example.sqlitedemo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -14,7 +16,8 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity {
 
     public static SQLiteHelper sqLiteHelper;
-    ArrayList<Name> names;
+    ArrayList<Name> names = new ArrayList<>();
+    RecyclerView recyclerView;
     EditText textInput;
     Button addButton;
 
@@ -29,9 +32,16 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Link the edit text field and the button
          */
+        recyclerView = findViewById(R.id.recyclerview);
         textInput = findViewById(R.id.textInput);
         addButton = findViewById(R.id.addButton);
 
+        /**
+         * Adapter shit
+         */
+        MyAdapter myAdapter = new MyAdapter(this, names);
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         /**
          * Creates SQLite database and creates the database if it is not created
