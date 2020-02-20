@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:cardBackgroundColor="#80C2C2C2"
+        app:cardBackgroundColor="#00C2C2C2"
         app:cardCornerRadius="30dp"
         app:cardElevation="0dp"
         app:cardPreventCornerOverlap="true"
@@ -25,7 +25,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:text="TextView"
-            android:textColor="#3C3C3C"
             android:textSize="30sp"
             android:textStyle="bold" />
 
