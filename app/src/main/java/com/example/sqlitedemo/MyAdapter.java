@@ -103,7 +103,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            myText = itemView.findViewById(R.id.person_name);
+            myText = itemView.findViewById(R.id.name_string);
         }
     }
 }

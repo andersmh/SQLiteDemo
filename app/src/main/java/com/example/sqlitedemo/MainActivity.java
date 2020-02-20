@@ -4,17 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText textInput;
-    Button addButton;
     public static SQLiteHelper sqLiteHelper;
     ArrayList<Name> names;
+    EditText textInput;
+    Button addButton;
+
 
 
     @Override
@@ -53,5 +56,29 @@ public class MainActivity extends AppCompatActivity {
             names.add(new Name(sqlId, sqlName));
 
         }
+
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!textInput.getText().toString().equals("")){
+                    String id = UUID.randomUUID().toString();
+                    /**
+                     * Adds name to list
+                     */
+                    names.add(new Name(id, textInput.getText().toString()));
+                    /**
+                     * Adds name to database
+                     */
+                    sqLiteHelper.insertData(
+                            id,
+                            textInput.getText().toString()
+                    );
+
+                    recreate();
+
+                }
+            }
+        });
     }
 }
