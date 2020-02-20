@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
          * Creates SQLite database and creates the database if it is not created
          */
         sqLiteHelper = new SQLiteHelper(this, "NamesDB.sqlite", null, 1);
-        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS NAMES(id VARCHAR PRIMARY KEY, name VARCHAR)");
 
 
         /**
@@ -84,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
                             id,
                             textInput.getText().toString()
                     );
-
                     recreate();
+                    textInput.setText("");
 
                 }
             }

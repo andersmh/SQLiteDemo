@@ -12,11 +12,20 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
+    /**
+     * Used to execute a query
+     * @param sql
+     */
     public void queryData(String sql) {
         SQLiteDatabase database = getWritableDatabase();
         database.execSQL(sql);
     }
 
+    /**
+     * Used to insert data to the database
+     * @param id
+     * @param string
+     */
     public void insertData(String id, String string) {
         SQLiteDatabase database = getWritableDatabase();
         String sql = "INSERT INTO NAMES VALUES (?, ?)";
@@ -32,7 +41,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         statement.executeInsert();
     }
 
-
+    /**
+     * Used to delete data on the database
+     * @param id
+     */
     public void deleteData(String id) {
         SQLiteDatabase database = getWritableDatabase();
 
@@ -45,13 +57,20 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         database.close();
     }
 
+    /**
+     * Fetches all the data on the database
+     * @param sql
+     * @return
+     */
     public Cursor getData(String sql) {
         SQLiteDatabase database = getReadableDatabase();
         return database.rawQuery(sql, null);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        queryData("CREATE TABLE IF NOT EXISTS NAMES(id VARCHAR PRIMARY KEY, name VARCHAR)");
 
     }
 
