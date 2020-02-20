@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
             String sqlName = cursor.getString(1);
 
             names.add(new Name(sqlId, sqlName));
-
         }
 
 
