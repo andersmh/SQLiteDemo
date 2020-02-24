@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     Button addButton;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
          * Creates SQLite database and creates the database if it is not created
          */
         sqLiteHelper = new SQLiteHelper(this, "NamesDB.sqlite", null, 1);
+        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS NAMES(id VARCHAR PRIMARY KEY, name VARCHAR)");
 
 
         /**
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!textInput.getText().toString().equals("")){
+                if (!textInput.getText().toString().equals("")) {
                     String id = UUID.randomUUID().toString();
                     /**
                      * Adds name to list

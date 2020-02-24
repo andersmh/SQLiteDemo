@@ -70,7 +70,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        queryData("CREATE TABLE IF NOT EXISTS NAMES(id VARCHAR PRIMARY KEY, name VARCHAR)");
 
     }
 
